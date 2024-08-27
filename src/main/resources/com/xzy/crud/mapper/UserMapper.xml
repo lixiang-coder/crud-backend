@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzy.crud.mapper.UserMapper">
+
+    <update id="update">
+        update user
+        <set>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="age != null">
+                age = #{age},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="sex != null">
+                sex = #{sex},
+            </if>
+            <if test="address != null">
+                address = #{address},
+            </if>
+            <if test="updateTime != null">
+                update_Time = #{updateTime},
+            </if>
+            <if test="phone != null">
+                phone = #{phone}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!-- 条件分页查询 -->
+    <select id="list" resultType="com.xzy.crud.pojo.User">
+        select * from user
+        <where>
+            <if test="id != null">
+                id = #{id}
+            </if>
+            <if test="name != null and name != ''">
+                name like concat('%',#{name},'%')
+            </if>
+            <if test="age != null">
+                age = #{age}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="sex != null and sex != ''">
+                and sex = #{sex}
+            </if>
+            <if test="address != null and name != ''">
+                address like concat('%',#{address},'%')
+            </if>
+            <if test="phone != null and phone != ''">
+                phone = #{phone}
+            </if>
+            <if test="createTime != null">
+                and create_Time = #{createTime}
+            </if>
+            <if test="updateTime != null">
+                and update_Time = #{updateTime}
+            </if>
+        </where>
+    </select>
+
+    <!--批量删除-->
+    <delete id="deleteByIds">
+        delete from user where id in
+        <foreach collection="ids" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>

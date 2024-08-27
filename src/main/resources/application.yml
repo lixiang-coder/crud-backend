@@ -1,0 +1,13 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/easypan?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false&serverTimezone=GMT%2b8
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true #开启驼峰
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #打印sql日志
