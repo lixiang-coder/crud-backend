@@ -2,6 +2,7 @@ package com.xzy.crud.service.impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.xzy.crud.annotation.Log;
 import com.xzy.crud.common.PageBean;
 import com.xzy.crud.mapper.UserMapper;
 import com.xzy.crud.pojo.User;
@@ -20,6 +21,7 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
+    @Log
     public void add(User user) {
         // 补充属性
         user.setCreateTime(LocalDateTime.now());
@@ -28,6 +30,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Log
     public void update(User user) {
         // 补充属性
         user.setUpdateTime(LocalDateTime.now());
@@ -36,23 +39,27 @@ public class UserServiceImpl implements UserService {
 
     // 根据id删除员工
     @Override
+    @Log
     public void delete(Long id) {
         userMapper.deleteById(id);
     }
 
     // 批量删除
     @Override
+    @Log
     public void delete(List<Integer> ids) {
         userMapper.deleteByIds(ids);
     }
 
     @Override
+    @Log
     public User findById(Long id) {
         User user = userMapper.findById(id);
         return user;
     }
 
     @Override
+    @Log
     public List<User> findAll() {
         List<User> userList = userMapper.findAll();
         return userList;
@@ -66,6 +73,7 @@ public class UserServiceImpl implements UserService {
      * @return
      */
     @Override
+    @Log
     public PageBean page01(Integer page, Integer pageSize) {
         // 1.获取总记录数
         Long count = userMapper.count();
@@ -80,6 +88,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Log
     public PageBean page02(Integer page, Integer pageSize, Long id, String name, Integer age, String status, String sex,
                            String address, String phone, LocalDateTime createTime, LocalDateTime updateTime) {
         // 设置分页参数

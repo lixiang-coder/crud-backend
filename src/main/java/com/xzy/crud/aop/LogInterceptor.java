@@ -16,13 +16,13 @@ import java.util.UUID;
 /**
  * 请求响应日志 AOP
  **/
-@Aspect
+//@Aspect
 @Component
 @Slf4j
 public class LogInterceptor {
 
     /**
-     * 拦截controller层,打印日志
+     * 拦截controller层，控制台打印日志
      */
     @Around("execution(* com.xzy.crud.controller.*.*(..))")
     public Object doInterceptor(ProceedingJoinPoint point) throws Throwable {

@@ -1,5 +1,6 @@
 package com.xzy.crud.controller;
 
+import com.xzy.crud.annotation.Log;
 import com.xzy.crud.common.PageBean;
 import com.xzy.crud.common.Result;
 import com.xzy.crud.pojo.User;
