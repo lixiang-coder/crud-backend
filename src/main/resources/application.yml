@@ -11,3 +11,30 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true #开启驼峰
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #打印sql日志
+
+# knife4j接口文档配置
+# 配置springdoc-openapi，用于文档化和访问API
+springdoc:
+  # 配置Swagger UI的访问路径和排序方式
+  swagger-ui:
+    path: /swagger-ui.html  # Swagger UI的访问路径
+    tags-sorter: alpha      # 按字母顺序排序标签
+    operations-sorter: alpha  # 按字母顺序排序操作
+  # 配置API文档的访问路径
+  api-docs:
+    path: /v3/api-docs  # API文档的访问路径
+  # 配置API分组，用于组织和管理API
+  group-configs:
+    - group: 'xzy'   # API分组名称
+      paths-to-match: '/**'  # 匹配所有路径
+      packages-to-scan: com.xzy.crud.controller  # 扫描的包，用于自动发现API
+# knife4j的增强配置
+knife4j:
+  enable: true
+  openapi:
+    title: "接口文档"
+    description: "用户增删改查接口文档"
+    email: "xiaoymin@foxmail.com"
+    concat: "xzy"
+    url: "https://xzynet.com.cn"
+    version: v1.0
