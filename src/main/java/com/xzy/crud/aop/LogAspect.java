@@ -4,12 +4,10 @@ import com.alibaba.fastjson.JSONObject;
 import com.xzy.crud.mapper.OperateLogMapper;
 import com.xzy.crud.pojo.OperateLog;
 import jakarta.annotation.Resource;
-import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -19,9 +17,6 @@ import java.util.Arrays;
 @Component
 @Aspect //切面类
 public class LogAspect {
-    @Resource
-    private HttpServletRequest request;
-
     @Resource
     private OperateLogMapper operateLogMapper;
 
